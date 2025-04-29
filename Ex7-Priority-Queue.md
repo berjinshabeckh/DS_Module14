@@ -1,21 +1,23 @@
-Ex7 Priority Queue
-DATE: 22.02.2025
-AIM:
+# Ex7 Priority Queue
+## DATE: 22.02.2025
+## AIM:
 To formulate the C code to display the elements of the priority queue after insertion and deletion operation.
 
-Algorithm
+## Algorithm
 1. Initialize an empty priority queue with size = 0.
 2. Insert a new element in sorted order (descending), shifting elements if needed.
 3. Delete the highest priority element (first element) and shift the rest left.
 4. Display all elements from index 0 to size - 1.
 5. Repeat the operations based on user choice until exit is selected.
 
-Program:
+## Program:
 ```
+/*
+Program to find the Total Waiting Time and Average Waiting Time in Shortest Job First scheduling algorithm.
 Developed by: Vishwaraj G.
 
 RegisterNumber: 212223220125
-
+*/
 #include <stdio.h>
 #include <stdlib.h>
 
@@ -96,8 +98,8 @@ int main() {
     return 0;
 }
 ```
-Output:
+## Output:
 ![Screenshot 2025-04-29 112025](https://github.com/user-attachments/assets/fa2d9cc6-910b-44ab-92a3-cf1086d7c715)
 
-Result:
+## Result:
 Thus, the C program to display the elements of the priority queue after insertion and deletion operation is implemented successfully
