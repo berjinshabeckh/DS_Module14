@@ -13,9 +13,7 @@ To formulate the C code to display the elements of the priority queue after inse
 ## Program:
 ```
 /*
-Program to find the Total Waiting Time and Average Waiting Time in Shortest Job First scheduling algorithm.
 Developed by: Vishwaraj G.
-
 RegisterNumber: 212223220125
 */
 #include <stdio.h>
