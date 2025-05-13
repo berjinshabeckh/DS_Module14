@@ -1,101 +1,61 @@
 # Ex6 Dequeue Elements from Circular Queue
-
-## DATE: 20.02.2025
+## DATE:
 ## AIM:
 To write a C program to delete three elements from the filled circular queue.
 
 ## Algorithm
-1. Initialize front and rear to -1.
-2. Fill the queue using circular enqueue logic.
-3. Check if the queue is empty before deletion.
-4. Delete three elements using circular dequeue.
-5. Display the queue from front to rear.
-
+```
+1. Start
+2.Define a queue with a fixed size SIZE and initialize front and rear pointers.
+3.Define the deQueue() function to remove and return an element from the front of the queue.
+4.Check if the queue is empty using isEmpty(); if empty, print an error message.
+5.If the queue has one element, reset both front and rear to -1.
+6.If the queue has more than one element, update front to the next index using modulo operation ((front + 1) % SIZE).
+7.Return the removed element from the front of the queue.
+8.End
+```
 ## Program:
 ```
 /*
 Program to delete three elements from the filled circular queue
-Developed by:Vishwaraj G.
-RegisterNumber: 212223220125
+Developed by: Ashwath M
+RegisterNumber: 212223230023
+
+#include <stdio.h> 
+#define SIZE 5 
+int items[SIZE]; 
+int front = -1, rear = -1; 
+*/ 
+int deQueue() 
+{ 
+int element; 
+element=items[front]; 
+if(isEmpty()) 
+{ 
+printf("Queue is Empty!!"); 
+} 
+else 
+{ 
+if(front==rear) 
+{ 
+front=-1; 
+rear=-1; 
+} 
+  
+  
+else 
+{ 
+front=(front+1)%SIZE; 
+} 
+} 
+return element; 
+}  
 */
-#include <stdio.h>
-#define SIZE 5
-
-int queue[SIZE];
-int front = -1, rear = -1;
-
-void enqueue(int value) {
-    if ((front == 0 && rear == SIZE - 1) || (rear == (front - 1 + SIZE) % SIZE)) {
-        printf("Queue is Full\n");
-        return;
-    } else if (front == -1) {
-        front = rear = 0;
-    } else {
-        rear = (rear + 1) % SIZE;
-    }
-    queue[rear] = value;
-}
-
-int dequeue() {
-    if (front == -1) {
-        printf("Queue is Empty\n");
-        return -1;
-    }
-
-    int data = queue[front];
-    if (front == rear) {
-        front = rear = -1;  
-    } else {
-        front = (front + 1) % SIZE;
-    }
-
-    return data;
-}
-
-void displayQueue() {
-    if (front == -1) {
-        printf("Queue is Empty\n");
-        return;
-    }
-
-    printf("Queue: ");
-    int i = front;
-    while (1) {
-        printf("%d ", queue[i]);
-        if (i == rear) break;
-        i = (i + 1) % SIZE;
-    }
-    printf("\n");
-}
-
-int main() {
-    enqueue(10);
-    enqueue(20);
-    enqueue(30);
-    enqueue(40);
-    enqueue(50);
-    printf("Initial ");
-    displayQueue();
-
-    printf("\nDeleting 3 elements:\n");
-    for (int i = 0; i < 3; i++) {
-        int removed = dequeue();
-        if (removed != -1) {
-            printf("Deleted: %d\n", removed);
-        }
-    }
-
-    printf("\nAfter Deletion ");
-    displayQueue();
-
-    return 0;
-}
 ```
-
 
 ## Output:
 
-![image](https://github.com/user-attachments/assets/8155a124-4ac4-4ca3-9ac1-b57aba7ca2a1)
+![image](https://github.com/user-attachments/assets/2e8f09af-ef23-475c-b22a-16ec23633893)
 
 
 ## Result:

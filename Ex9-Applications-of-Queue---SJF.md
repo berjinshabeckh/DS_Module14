@@ -1,82 +1,93 @@
 # Ex9 Applications of Queue - SJF
-## DATE: 19-02-2025
+## DATE:
 ## AIM:
 To incorporate the code to calculate the Total Waiting Time and Average Waiting Time in Shortest Job First scheduling algorithm.
 ## Algorithm
-1. Start
-2. Input number of processes and their burst times
-3. Sort burst times in ascending order along with process IDs
-4. Calculate waiting time for each process 
-5. Compute total and average waiting time
-6. End
-
+```
+1. start
+2. Read the number of processes n and their burst times into the array bt[]. 
+3. Assign process numbers to array p[] (from 1 to n). 
+4. Sort the processes based on burst time using selection sort, updating both bt[] and p[] arrays. 
+5. Calculate the waiting time wt[] for each process by summing burst times of previous 
+processes. 
+6. Calculate the turnaround time tat[] as the sum of burst time and waiting time for each 
+process. 
+7. Compute and print the average waiting time and average turnaround time. 
+8. End
+```
 ## Program:
 ```
 /*
 Program to find the Total Waiting Time and Average Waiting Time in Shortest Job First scheduling algorithm.
-Developed by: Vishwaraj G.
-RegisterNumber: 212223220125 
+Developed by: Ashwath M
+RegisterNumber: 212223230023
+
+#include<stdio.h> 
+int main() 
+{ 
+int bt[20],p[20],wt[20],tat[20],i,j,n,total=0,pos,temp; 
+float avg_wt,avg_tat; 
+scanf("%d",&n); 
+for(i=0;i<n;i++) 
+{ 
+scanf("%d",&bt[i]); 
+p[i]=i+1; 
+} 
+for(i=0;i<n;i++) 
+{ 
+pos=i; 
+for(j=i+1;j<n;j++) 
+{ 
+if(bt[j]<bt[pos]) 
+pos=j; 
+} 
+  
+  
+ 
+temp=bt[i]; 
+bt[i]=bt[pos]; 
+bt[pos]=temp; 
+ 
+temp=p[i]; 
+p[i]=p[pos]; 
+p[pos]=temp; 
+} 
+ 
+wt[0]=0; 
+for(i=1;i<n;i++) 
+{ 
+wt[i]=0; 
+for(j=0;j<i;j++) 
+wt[i]+=bt[j]; 
+total+=wt[i]; 
+} 
+ 
+avg_wt=(float)total/n; 
+total=0; 
+printf("Process Burst Time Waiting Time Turnaround Time\n"); 
+for(i=0;i<n;i++) 
+{ 
+tat[i]=bt[i]+wt[i]; //calculate turnaround time 
+total+=tat[i]; 
+//printf("\n"); 
+printf("p%d %d %d %d\n",p[i],bt[i],wt[i],tat[i]); 
+} 
+ 
+avg_tat=(float)total/n; //average turnaround time 
+// printf("\n"); 
+printf("Average Waiting Time=%f\n",avg_wt); 
+// printf("\n"); 
+printf("Average Turnaround Time=%f\n",avg_tat); 
+return 0; 
+} 
+
 */
-#include <stdio.h>
-
-void sortByBurstTime(int pid[], int bt[], int n) {
-    int temp;
-    for(int i=0; i<n-1; i++) {
-        for(int j=0; j<n-i-1; j++) {
-            if(bt[j] > bt[j+1]) {
-                temp = bt[j];
-                bt[j] = bt[j+1];
-                bt[j+1] = temp;
-
-                temp = pid[j];
-                pid[j] = pid[j+1];
-                pid[j+1] = temp;
-            }
-        }
-    }
-}
-
-int main() {
-    int n;
-    printf("Enter number of processes: ");
-    scanf("%d", &n);
-
-    int pid[n], bt[n], wt[n];
-    float total_wt = 0, avg_wt;
-
-    for(int i = 0; i < n; i++) {
-        pid[i] = i + 1;
-        printf("Enter Burst Time for Process %d: ", pid[i]);
-        scanf("%d", &bt[i]);
-    }
-
-    sortByBurstTime(pid, bt, n);
-
-    wt[0] = 0;
-
-    for(int i = 1; i < n; i++) {
-        wt[i] = wt[i-1] + bt[i-1];
-        total_wt += wt[i];
-    }
-
-    avg_wt = total_wt / n;
-
-    printf("\nProcess\tBurst Time\tWaiting Time\n");
-    for(int i = 0; i < n; i++) {
-        printf("P%d\t%d\t\t%d\n", pid[i], bt[i], wt[i]);
-    }
-
-    printf("\nTotal Waiting Time: %.2f", total_wt);
-    printf("\nAverage Waiting Time: %.2f\n", avg_wt);
-
-    return 0;
-}
-
-
 ```
 
 ## Output:
-![image](https://github.com/user-attachments/assets/63a77366-77a1-4a1f-924d-c73e2484de2f)
+
+![image](https://github.com/user-attachments/assets/f0b51994-aa40-445f-b57a-d11f0a2a9fe4)
+
 
 ## Result:
 Thus, the code to calculate the Total Waiting Time and Average Waiting Time in Shortest Job First scheduling algorithm is implemented successfully.
