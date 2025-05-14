@@ -18,8 +18,8 @@ To write a C program to delete three elements from the filled circular queue.
 ```
 /*
 Program to delete three elements from the filled circular queue
-Developed by: Ashwath M
-RegisterNumber: 212223230023
+Developed by: Berjin Shabeck
+RegisterNumber: 212222240018
 
 #include <stdio.h> 
 #define SIZE 5 
